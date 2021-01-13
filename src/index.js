@@ -1,6 +1,23 @@
 import React from 'react'; // imports React library
 import ReactDOM from 'react-dom'; // imports ReactDOM
 import './index.css'; // imports the css file.
+import styled from 'styled-components';
+
+
+// Text styles isolated in their own component.
+// Use these syles for more control in JavaScript rather than the CSS file.
+const Text = styled.div`
+
+  color: blue;
+  font-size: 34px;
+  border: ${({isActive}) => isActive ? '1px solid black' : '3px dotted green' };
+`;
+
+// unique styling here.
+const textStyles = {
+  color: 'red',
+  fontSize: '34px'
+};
 
 /* 
 When called, this Square component will create a square button. 
@@ -359,7 +376,8 @@ class Game extends React.Component {
           
           style={this.state.stepNumber === move ? 
             {fontWeight: 'bold'} : {fontWeight: 'normal'}}>
-          <div>{summary}</div>
+          <Text style={textStyles}>{summary}</Text>
+          <Text isActive={true}>What now playa?</Text>
           <button onClick={() => this.jumpTo(move)}
             >{desc}
           </button>
